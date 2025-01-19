@@ -2,7 +2,7 @@ import turtle as t
 import math
 
 class funcGraph:
-    def __init__(self, wt = "函数图", bgColor = "green", gpSize = 1, gpColor = "black", apSize = 3, apColor = "red", mpSize = 3, mpColor = "red", xAxisMag = 10):
+    def __init__(self, wt = "函数图", bgColor = "green", gpSize = 1, gpColor = "black", apSize = 1, apColor = "red", mpSize = 3, mpColor = "red", xAxisMag = 10):
         """
         初始化函数图类
         wt(window title): 窗口标题
@@ -29,7 +29,7 @@ class funcGraph:
         self.mpColor = mpColor
         self.xAxisMag = xAxisMag
     
-    def set(self, wt = "函数图", bgColor = "green", gpSize = 1, gpColor = "black", apSize = 3, apColor = "red", mpSize = 3, mpColor = "red", xAxisMag = 10):
+    def set(self, wt = "函数图", bgColor = "green", gpSize = 1, gpColor = "black", apSize = 1, apColor = "red", mpSize = 3, mpColor = "red", xAxisMag = 10):
         """
         设置函数图类参数
         wt(window title): 窗口标题
@@ -103,7 +103,7 @@ class funcGraph:
         self.P.up()
         self.P.pensize(self.mpSize)
         self.P.color(self.mpColor)
-        for x in range(-50, 51):
+        for x in range(-1000, 1001):
             y = eval(func)
             print(f"x:{x}, y:{y}",end="\r")
             self.P.goto((x * self.xAxisMag, y))
@@ -112,11 +112,13 @@ class funcGraph:
     
     def mainloop(self):
         """进入消息循环"""
-        self.scr.exitonclick()
+        self.scr.mainloop()
 
 if __name__ == "__main__" :
-    app = funcGraph(apSize=5, mpSize=5)
+    app = funcGraph(mpSize=1, xAxisMag=1)
     app.draw_grid()
     app.draw_axis()
+    app.draw("x")
+    app.set(mpSize=1, xAxisMag=10)
     app.draw("x ** 2")
     app.mainloop()
