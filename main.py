@@ -99,7 +99,6 @@ class funcGraph:
         math.pow(x, 2)
         x + 3
         1 - (math.pow((1 - x), 2))
-        注：请使用math.pow(x, n)代替x ** n，因为如果x为负数，x ** n会报错
         """
         self.P.up()
         self.P.pensize(self.mpSize)
@@ -109,6 +108,7 @@ class funcGraph:
             print(f"x:{x}, y:{y}",end="\r")
             self.P.goto((x * self.xAxisMag, y))
             self.P.down()
+        print("\nDone!")
     
     def mainloop(self):
         """进入消息循环"""
@@ -118,5 +118,5 @@ if __name__ == "__main__" :
     app = funcGraph(apSize=5, mpSize=5)
     app.draw_grid()
     app.draw_axis()
-    app.draw("math.pow(x, 2)")
+    app.draw("x ** 2")
     app.mainloop()
